@@ -1,0 +1,33 @@
+public void conectarBD() {
+        Connection connection = null;
+        Statement query = null;
+    	ResultSet resultados = null;
+    	
+        try {
+            // Establecer la conexión con la base de datos, en XXXX reemplazar con el nombre de la BD en PhpMyAdmin
+            String url = "jdbc:mysql://localhost:3306/XXXX";
+            String username = "root";
+            String password_BD = "";
+            connection = DriverManager.getConnection(url, username, password_BD);
+            
+
+            // Aquí realizar las operaciones con la base de datos
+         
+            // Crear una declaración SQL
+            query = connection.createStatement();
+            
+            String sql = "SELECT * FROM bd_acme";
+            resultados = query.executeQuery(sql);
+           
+            
+            while (resultados.next()) {
+                //Iterar por los resultados, aquí se guardarían las variables
+            }
+            
+            // Cerrar la conexión
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("No se pudo conectar a la BD. ¿Está abierto el Xampp?");
+        }
+    }

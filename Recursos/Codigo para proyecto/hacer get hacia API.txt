@@ -1,0 +1,40 @@
+	@Override
+	public String getDataFromApi() {
+		String output = null;
+		 
+		try {
+            // URL de la API REST, el listado de APIs públicas está en: https://github.com/juanbrujo/listado-apis-publicas-en-chile
+            URL apiUrl = new URL("https://mindicador.cl/api");
+
+            // Abre la conexión HTTP
+            HttpURLConnection connection = (HttpURLConnection) apiUrl.openConnection();
+
+            // Configura la solicitud (método GET en este ejemplo)
+            connection.setRequestMethod("GET");
+
+            // Obtiene el código de respuesta
+            int responseCode = connection.getResponseCode();
+
+            // Procesa la respuesta si es exitosa
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Lee la respuesta del servidor
+                BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String inputLine;
+                StringBuilder response = new StringBuilder();
+
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
+                }
+
+                // Cierra la conexión y muestra la respuesta
+                in.close();
+                output = response.toString();
+            } else {
+                System.out.println("Error al conectar a la API. Código de respuesta: " + responseCode);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+		//Como resultado tenemos un String output que contiene el JSON de la respuesta de la API
+		return output;
+	}
