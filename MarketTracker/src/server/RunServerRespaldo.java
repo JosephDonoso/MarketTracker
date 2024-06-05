@@ -6,12 +6,12 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import common.InterfazDeServer;
 
-public class RunServer {
+public class RunServerRespaldo {
 	public static void main(String[] args) throws RemoteException, AlreadyBoundException {
 		InterfazDeServer server = new ServerImpl();
-		Registry registry = LocateRegistry.createRegistry(5000);
+		Registry registry = LocateRegistry.createRegistry(5001);
 		registry.bind("server", server);
-		System.out.println("Servidor de Santiago arriba!!");
+		System.out.println("Servidor de Valparaíso arriba!!");
 		
 	}
 }

@@ -9,7 +9,7 @@ public class Usuario implements Serializable{
 	private String rut;
 	private String nombre;
 	private ArrayList<Mercado> mercados_consultados = new ArrayList<>(); //Agregado en futuras entregas
-    private String estado; //Ninguno - Actualizado - Borrado - Añadido
+    private String estado; //Ninguno - Actualizado - Eliminado - Añadido
 	
 	public Usuario(String rut, String nombre) {
 		this.setRut(rut);

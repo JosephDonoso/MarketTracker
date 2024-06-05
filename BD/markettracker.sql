@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2024 a las 18:07:49
+-- Tiempo de generación: 05-06-2024 a las 03:51:34
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -32,7 +32,6 @@ CREATE TABLE `mercados` (
   `rut_cliente` varchar(15) NOT NULL COMMENT 'Identificador del cliente',
   `moneda_cambio` text DEFAULT NULL COMMENT 'Moneda de cambio',
   `moneda_pago` text DEFAULT NULL COMMENT 'Moneda de pago',
-  `monto_min_orden` double DEFAULT NULL COMMENT 'Tamaño de orden mínimo aceptado',
   `ultimo_precio` double DEFAULT NULL COMMENT 'Precio de la última orden ejecutada',
   `min_precio_venta` double DEFAULT NULL COMMENT 'Menor precio de venta',
   `max_precio_compra` double DEFAULT NULL COMMENT 'Máximo precio de compra',
@@ -41,6 +40,14 @@ CREATE TABLE `mercados` (
   `variacion_precio_7d` float DEFAULT NULL COMMENT 'Cuanto ha variado el precio el los últimos 7 días (porcentaje)',
   `fecha_consulta` timestamp NULL DEFAULT NULL COMMENT 'Fecha de cuando realizo la consulta un cliente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `mercados`
+--
+
+INSERT INTO `mercados` (`id_mercado`, `rut_cliente`, `moneda_cambio`, `moneda_pago`, `ultimo_precio`, `min_precio_venta`, `max_precio_compra`, `volumen`, `variacion_precio_24h`, `variacion_precio_7d`, `fecha_consulta`) VALUES
+('BTC-CLP', '111', 'BTC', 'CLP', 63508280, 63940000, 63508280, 6.29064006, 0.022, 0.038, '2024-06-04 23:59:02'),
+('BTC-COP', '111', 'BTC', 'COP', 266906000, 267930479, 266906000, 1.08691484, 0.026, 0.041, '2024-06-05 00:02:44');
 
 -- --------------------------------------------------------
 
@@ -59,10 +66,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`rut`, `nombre`) VALUES
 ('111', 'Joseph'),
-('123', 'pablo'),
+('123', 'Pablo'),
 ('222', 'Jorge'),
-('333', 'Seba'),
-('345', 'lopa');
+('333', 'Seba');
 
 --
 -- Índices para tablas volcadas

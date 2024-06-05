@@ -10,7 +10,7 @@ public class Mercado implements Serializable{
     private String rut_cliente;
     private String moneda_cambio;
     private String moneda_pago;
-    private String estado; //Ninguno - Actualizado - Borrado - Añadido
+    private String estado; //Ninguno - Actualizado - Eliminado - Añadido
 	private double monto_min_orden;
     private double ultimo_precio;
     private double min_precio_venta;
@@ -18,7 +18,7 @@ public class Mercado implements Serializable{
     private double volumen;
     private double variacion_precio_24h;
     private double variacion_precio_7d;
-    private Date fecha_consulta;
+    private String fecha_consulta;
 
     public Mercado(String id, String moneda_cambio, String moneda_pago, double monto_min_orden) {
         this.setId(id);
@@ -30,7 +30,7 @@ public class Mercado implements Serializable{
 
 	public Mercado(String id, String moneda_cambio, String moneda_pago, double ultimo_precio, 
 					double min_precio_venta, double max_precio_compra, double volumen, 
-					double variacion_precio_24h, double variacion_precio_7d ) {
+					double variacion_precio_24h, double variacion_precio_7d , String fecha_consulta) {
         this.setId(id);
         this.setMoneda_cambio(moneda_cambio);
         this.setMoneda_pago(moneda_pago);
@@ -41,7 +41,25 @@ public class Mercado implements Serializable{
 		this.setVariacion_precio_24h(variacion_precio_24h);
 		this.setVariacion_precio_7d(variacion_precio_7d);
         this.setEstado("Ninguno");
+		this.setFecha_consulta(fecha_consulta);
     }
+	
+	public Mercado(String id, String rut_cliente, String moneda_cambio, String moneda_pago, double ultimo_precio, 
+				double min_precio_venta, double max_precio_compra, double volumen, 
+				double variacion_precio_24h, double variacion_precio_7d, String fecha_consulta ) {
+		this.setId(id);
+		this.setRut_cliente(rut_cliente);
+		this.setMoneda_cambio(moneda_cambio);
+		this.setMoneda_pago(moneda_pago);
+		this.setUltimo_precio(ultimo_precio);
+		this.setMin_precio_venta(min_precio_venta);
+		this.setMax_precio_compra(max_precio_compra);
+		this.setVolumen(volumen);
+		this.setVariacion_precio_24h(variacion_precio_24h);
+		this.setVariacion_precio_7d(variacion_precio_7d);
+		this.setFecha_consulta(fecha_consulta);
+		this.setEstado("Ninguno");
+	}
 
 	public String getId() {
         return id;
@@ -158,13 +176,13 @@ public class Mercado implements Serializable{
 	}
 
 
-	public Date getFecha_consulta() {
+	public String getFecha_consulta() {
 		return fecha_consulta;
 	}
 
 
-	public void setFecha_consulta(Date fecha_consulta) {
-		this.fecha_consulta = fecha_consulta;
+	public void setFecha_consulta(String fecha_consulta2) {
+		this.fecha_consulta = fecha_consulta2;
 	}
 	
 }
